@@ -1,16 +1,30 @@
 <template>
   <div id="app">
-    <Pokemon />
+    <div :key="index" v-for="(pokemon, index) in pokemons">
+      <Pokemon :index="index + 1" :name="pokemon.name" />
+    </div>
   </div>
 </template>
 
 <script>
-import Pokemon from './components/Pokemon';
+import api from './services/api';
+import Pokemon from './components/Pokemon'
 
 export default {
   name: 'App',
   components: {
     Pokemon
+  },
+  data() {
+    return {
+      pokemons: []
+    }
+  },
+  // Função é executada quando a página é criada
+  created: function() {
+    api.get('pokemon?limit=151&offset=0').then((response) => { 
+      this.pokemons = response.data.results;
+    });
   }
 }
 </script>
