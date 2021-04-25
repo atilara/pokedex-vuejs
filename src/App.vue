@@ -1,7 +1,9 @@
 <template>
   <div id="app">
-    <div :key="index" v-for="(pokemon, index) in pokemons">
-      <Pokemon :index="index + 1" :name="pokemon.name" />
+    <div class="column is-half is-offset-one-quarter">
+      <div :key="index" v-for="(pokemon, index) in pokemons">
+        <Pokemon :index="index + 1" :name="pokemon.name" />
+      </div>
     </div>
   </div>
 </template>
