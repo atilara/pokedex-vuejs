@@ -2,7 +2,7 @@
   <div class="card">
     <div class="card-image">
       <figure>
-        <img :src="pokemon.front" alt="Placeholder image">
+        <img :src="currentImg" alt="Placeholder image">
       </figure>
     </div>
     <div class="card-content">
@@ -12,7 +12,9 @@
           <p class="subtitle is-6">{{ pokemon.type }}</p>
         </div>
       </div>
-      <div class="content"></div>
+      <div class="content">
+        <button class="button is-medium is-fullwidth" @click="changeSprite">Mudar Sprite</button>
+      </div>
     </div>
   </div>
 </template>
@@ -31,14 +33,28 @@ export default {
       this.pokemon.type = response.data.types[0].type.name;
       this.pokemon.front = response.data.sprites.front_default;
       this.pokemon.back = response.data.sprites.back_default;
+      this.currentImg = response.data.sprites.front_default;
     });
   },
   data() {
     return {
+      isFront: true,
+      currentImg: '',
       pokemon: {
         type: '',
         front: '',
         back: '',
+      }
+    }
+  },
+  methods: {
+    changeSprite: function() {
+      if(this.isFront) {
+        this.isFront = false;
+        this.currentImg = this.pokemon.back;
+      } else {
+        this.isFront = true;
+        this.currentImg = this.pokemon.front;
       }
     }
   },
