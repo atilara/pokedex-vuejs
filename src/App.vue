@@ -1,8 +1,11 @@
 <template>
   <div id="app">
     <div class="column is-half is-offset-one-quarter">
-      <div :key="index" v-for="(pokemon, index) in pokemons">
-        <Pokemon :index="index + 1" :name="pokemon.name" />
+      <img src="./assets/logo.png" alt="Pokemon Logo">
+      <input type="text" name="" id="" placeholder="Buscar Pokemon" class="input is-rounded" v-model="search">
+      <button id="searchBtn" class="button is-fullwidth is-success is-rounded" @click="searchPokemons">Buscar</button>
+      <div :key="pokemon.url" v-for="(pokemon, index) in filteredPokemons">
+        <Pokemon :index="index + 1" :name="pokemon.name" :url="pokemon.url" />
       </div>
     </div>
   </div>
@@ -19,14 +22,27 @@ export default {
   },
   data() {
     return {
-      pokemons: []
+      pokemons: [],
+      filteredPokemons: [],
+      search: ''
     }
   },
   // Função é executada quando a página é criada
   created: function() {
     api.get('pokemon?limit=151&offset=0').then((response) => { 
       this.pokemons = response.data.results;
+      this.filteredPokemons = response.data.results;
     });
+  },
+  methods: {
+    searchPokemons: function() {
+      this.filteredPokemons = this.pokemons;
+      if(this.search == '' || this.search == ' ') {
+        this.filteredPokemons = this.pokemons;
+      } else {
+        this.filteredPokemons = this.pokemons.filter((pokemon) => pokemon.name == this.search);
+      }
+    }
   }
 }
 </script>
@@ -39,5 +55,9 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+#searchBtn {
+  margin-top: 1vh;
 }
 </style>

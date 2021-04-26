@@ -26,10 +26,11 @@ export default {
   name: 'Pokemon',
   props: {
     index: Number,
-    name: String
+    name: String,
+    url: String
   },
   created: function() {
-    api.get(`pokemon/${this.index}`).then((response) => {
+    api.get(this.url).then((response) => {
       this.pokemon.type = response.data.types[0].type.name;
       this.pokemon.front = response.data.sprites.front_default;
       this.pokemon.back = response.data.sprites.back_default;
