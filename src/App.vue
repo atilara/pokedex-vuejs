@@ -1,11 +1,15 @@
 <template>
   <div id="app">
     <div class="column is-half is-offset-one-quarter">
-      <img src="./assets/logo.png" alt="Pokemon Logo">
+      <img src="./assets/logo.png" alt="Pokemon Logo" width="30%">
       <input type="text" name="" id="" placeholder="Buscar Pokemon" class="input is-rounded" v-model="search">
       <button id="searchBtn" class="button is-fullwidth is-success is-rounded" @click="searchPokemons">Buscar</button>
-      <div :key="pokemon.url" v-for="(pokemon, index) in filteredPokemons">
-        <Pokemon :index="index + 1" :name="pokemon.name" :url="pokemon.url" />
+    </div>
+    <div>
+      <div id="pokemon-list">
+        <div :key="pokemon.url" v-for="(pokemon, index) in filteredPokemons">
+          <Pokemon :index="index + 1" :name="pokemon.name" :url="pokemon.url" />
+        </div>
       </div>
     </div>
   </div>
@@ -59,5 +63,13 @@ export default {
 
 #searchBtn {
   margin-top: 1vh;
+}
+
+#pokemon-list {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 </style>

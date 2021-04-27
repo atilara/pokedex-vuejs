@@ -1,5 +1,5 @@
 <template>
-  <div class="card">
+  <div id="card" class="card">
     <div class="card-image">
       <figure>
         <img :src="currentImg" alt="Placeholder image">
@@ -70,7 +70,11 @@ export default {
 
 <style>
   .card {
-    margin-top: 1vh;
+    margin: 1vh;
+  }
+
+  #card {
+    width: 20vw;
   }
 </style>
 
