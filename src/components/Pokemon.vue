@@ -74,7 +74,7 @@ export default {
   }
 
   #card {
-    width: 20vw;
+    width: 20rem;
   }
 </style>
 
