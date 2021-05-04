@@ -1,24 +1,38 @@
-# pokedex-vuejs
+# Pokedex
 
-## Project setup
-```
-yarn install
-```
+## ℹ Sobre o Projeto
 
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
+Feito durante a Formação NodeJS com o intuito de aprender VueJS para criação de aplicações web e consumo de APIs.
 
-### Compiles and minifies for production
-```
-yarn build
-```
+Nesse caso, a API consumida foi a PokeAPI para criação de uma Pokedex
 
-### Lints and fixes files
-```
-yarn lint
-```
+## 🛠 Tecnologias
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+- VueJS
+- Axios
+- Bulma
+
+## 🌐 Resultado
+
+<a href="https://pokedex-vuejs-kappa.vercel.app/">
+  <img src=".github/resultado.png" width="50%" />
+</a>
+
+Clique na imagem para abrir o site utilizando o Vercel!
+
+## 🤔 Como executar o Projeto? 
+
+### Requisitos
+
+- NPM ou Yarn
+- Vue
+
+### Rodando
+
+```bash
+# Instação de dependências
+$ yarn install
+
+# Executando projeto
+$ yarn serve
+```
